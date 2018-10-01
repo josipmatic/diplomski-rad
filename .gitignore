@@ -127,3 +127,4 @@ Thumbs.db
 /config
 /public/wp-content/themes/diplomski-theme/node_modules
 /public/wp-content/themes/diplomski-theme/vendor
+/public/wp-content/themes/diplomski-theme/package-lock.json
