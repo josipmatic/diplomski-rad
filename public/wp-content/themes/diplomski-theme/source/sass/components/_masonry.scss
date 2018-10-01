@@ -1,0 +1,24 @@
+/* =============================================================================
+   MASONRY (components/_masonry.scss)
+   ========================================================================== */
+
+/**
+ * 1. Used `!important` to override some `bricks.js` styles.
+ */
+
+.c-masonry {
+	width: 100% !important; /* stylelint-disable-line */ /* [1] */
+}
+
+
+
+/* Item
+   ========================================================================== */
+
+.c-masonry__item {
+	width: 100%;
+
+	@include media-breakpoint-up(lg) {
+		width: calc(50% - 15px);
+	}
+}

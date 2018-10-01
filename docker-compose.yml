@@ -1,0 +1,61 @@
+version: "2"
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "db_wp"
+      MYSQL_USER: "db_usr"
+      MYSQL_PASSWORD: "Baza*123"
+    ports:
+      - "3306:3306"
+    volumes_from:
+      - mysql_storage
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+  mysql_storage:
+    image: alpine
+    volumes:
+      - "./data/mysql_db:/var/lib/mysql"
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+  web:
+    depends_on:
+      - mysql
+    build: ./dockerfiles/web
+    ports:
+      - "80:80"
+    links:
+      - mysql
+    volumes_from:
+      - web_storage
+    restart: always
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+
+  web_storage:
+    image: alpine
+    volumes:
+      - ./public:/var/www/html
+      - ./config/php/php.ini:/usr/local/etc/php/php.ini

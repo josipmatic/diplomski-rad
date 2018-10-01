@@ -1,0 +1,132 @@
+/* =============================================================================
+   TEMPLATE-CARD (components/_template-card.scss)
+   ========================================================================== */
+
+.c-template-card {
+	display: block;
+	color: inherit;
+	overflow: hidden;
+	border: 1px solid $color-gray-50;
+	padding: 1.5625rem;
+	transition: border-color .2s;
+	margin-bottom: 0;
+}
+
+.c-template-card--featured {
+	color: $color-white;
+	background-color: $color-blue;
+}
+
+.c-template-card--premium {
+	border-color: $color-gold;
+}
+
+
+
+/* Heading
+   ========================================================================== */
+
+.c-template-card__heading {
+	@extend .u-h4;
+	margin-bottom: .625rem;
+}
+
+
+
+/* Badge list
+   ========================================================================== */
+
+.c-template-card__badge-list {
+	@extend .o-list-inline;
+	margin-bottom: .625rem;
+
+	li {
+		@extend .o-list-inline__item;
+	}
+
+	li + li {
+		margin-left: .5rem;
+	}
+}
+
+
+
+/* Gallery
+   ========================================================================== */
+
+.c-template-card__gallery {
+	@extend .o-list-bare;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 1.5625rem;
+
+	li {
+		@extend .o-list-bare__item;
+		width: 100%;
+		height: 15.625rem;
+		background-size: cover;
+		background-position: top center;
+
+		@include media-breakpoint-up(sm) {
+			height: 20rem;
+		}
+	}
+}
+
+.c-template-card__gallery--half {
+	li {
+		width: calc(50% - .625rem);
+		height: 8.75rem;
+
+		@include media-breakpoint-up(sm) {
+			height: 10.625rem;
+		}
+	}
+}
+
+.c-template-card__gallery--third {
+	margin-right: -6.25rem;
+	margin-left: -6.25rem;
+
+	li {
+		width: calc((100% / 3) - (2.5rem / 3));
+		height: 8.75rem;
+
+		@include media-breakpoint-up(sm) {
+			height: 10.625rem;
+		}
+	}
+}
+
+
+
+/* CTA
+   ========================================================================== */
+
+.c-template-card__cta {
+	@extend .c-btn;
+	@extend .c-btn--md;
+	display: block;
+	width: calc(100% + 3.25rem);
+	margin: 0 -1.625rem -1.625rem -1.625rem;
+
+	.c-template-card--featured & {
+		background-color: $color-dark-blue;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: darken($color-dark-blue, 10%);
+		}
+	}
+
+	.c-template-card--premium & {
+		background-color: $color-gold;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background-color: darken($color-gold, 10%);
+		}
+	}
+}

@@ -1,0 +1,52 @@
+/* =============================================================================
+   FLOATS (utilities/_floats.scss)
+   ========================================================================== */
+
+/* stylelint-disable declaration-no-important */
+
+/**
+ * Utilities for controlling the wrapping of content around an element.
+ */
+
+@each $breakpoint-key, $breakpoint-value in $breakpoints {
+	@if $breakpoint-key == xs {
+		.u-float-right {
+			float: right !important;
+		}
+
+		.u-float-left {
+			float: left !important;
+		}
+
+		.u-float-none {
+			float: none !important;
+		}
+	} @else {
+		@include media-breakpoint-up(#{$breakpoint-key}) {
+			.u-float-right\@#{$breakpoint-key} {
+				float: right !important;
+			}
+
+			.u-float-left\@#{$breakpoint-key} {
+				float: left !important;
+			}
+
+			.u-float-none\@#{$breakpoint-key} {
+				float: none !important;
+			}
+		}
+	}
+}
+
+/**
+ * Clear any floats within an element. Further reading:
+ * http://www.cssmojo.com/the-very-latest-clearfix-reloaded/
+ */
+
+.u-clearfix {
+	&::after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
