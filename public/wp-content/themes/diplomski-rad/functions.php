@@ -7,6 +7,15 @@
  * @package diplomski-rad
  */
 
+/**
+ * Returns true if we should load webpack.
+ *
+ * @return boolean
+ */
+function diplomski_should_load_webpack() {
+	return ( defined( 'DIPLOMSKI_LOAD_WEBPACK' ) && DIPLOMSKI_LOAD_WEBPACK );
+}
+
 if ( ! function_exists( 'diplomski_rad_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -119,18 +128,58 @@ add_action( 'widgets_init', 'diplomski_rad_widgets_init' );
 /**
  * Enqueue scripts and styles.
  */
-function diplomski_rad_scripts() {
-	wp_enqueue_style( 'diplomski-rad-style', get_stylesheet_uri() );
+function diplomski_scripts() {
+	if ( diplomski_should_load_webpack() && file_exists( trailingslashit( get_template_directory() ) . '.webpack-dev' ) ) {
+		wp_enqueue_script(
+			'diplomski-styles',
+			'//diplomski-rad.test:9000/assets/js/styles.js',
+			array(),
+			null,
+			false
+		);
 
-	wp_enqueue_script( 'diplomski-rad-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+		wp_enqueue_script(
+			'diplomski-main',
+			'//diplomski-rad.test:9000/assets/js/main.js',
+			array(),
+			null,
+			true
+		);
+	} else {
+		wp_enqueue_style(
+			'diplomski-style',
+			get_template_directory_uri() . '/assets/css/styles.css',
+			array(),
+			'201810031455'
+		);
 
-	wp_enqueue_script( 'diplomski-rad-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
+		wp_enqueue_script(
+			'diplomski-main',
+			get_template_directory_uri() . '/assets/js/main.js',
+			array(),
+			'201810031455',
+			true
+		);
 	}
+
+	wp_enqueue_style(
+		'ibm-plex-sans',
+		'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,500,500i,700,700i',
+		false
+	);
+
+	wp_enqueue_style(
+		'ibm-plex-mono',
+		'https://fonts.googleapis.com/css?family=IBM+Plex+Mono',
+		false
+	);
 }
-add_action( 'wp_enqueue_scripts', 'diplomski_rad_scripts' );
+add_action( 'wp_enqueue_scripts', 'diplomski_scripts' );
+
+/**
+ * Includes.
+ */
+require get_template_directory() . '/inc/inc.php';
 
 /**
  * Implement the Custom Header feature.
