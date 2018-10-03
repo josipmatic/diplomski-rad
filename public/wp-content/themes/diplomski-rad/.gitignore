@@ -1,0 +1,14 @@
+.DS_Store
+
+# Compiled assets
+.webpack-dev
+/assets
+/languages/*.pot
+/languages/*.mo
+
+# Node
+/node_modules
+/npm-debug.txt
+
+# Composer
+/vendor
