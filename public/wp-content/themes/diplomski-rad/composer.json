@@ -1,6 +1,6 @@
 {
-	"name": "slicejack/bojler-site-theme",
-	"description": "Bojler site WordPress theme",
+	"name": "josip-matic/diplomski-rad-theme",
+	"description": "Diplomski rad WordPress theme",
 	"type": "project",
 	"require-dev": {
 		"squizlabs/php_codesniffer": "^3.2.2",
