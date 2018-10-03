@@ -135,8 +135,8 @@ function generatePotFile() {
 
 			wpPot( {
 				destFile: paths.potFile,
-				domain: 'bojler-site',
-				'package': 'Bojler Site',
+				domain: 'diplomski-rad',
+				'package': 'Diplomski Rad',
 				src: [
 					'**/*.php',
 					'!vendor/**',
