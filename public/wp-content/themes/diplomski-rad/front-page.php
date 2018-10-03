@@ -34,15 +34,13 @@ if ( $examples->have_posts() ) :
 <section class="u-pt-16 u-pb-16">
 	<div class="o-container">
 		<div class="o-row">
-		<?php while ( $examples->have_posts() ) : ?>
-			<?php
+		<?php
+		while ( $examples->have_posts() ) :
 			$examples->the_post();
 
-			?>
-			<div class="o-col-4">
-				<h2 class="u-font-normal u-font-bold"><?php echo esc_html( get_the_title() ); ?></h2>
-			</div><!-- /.o-col -->
-		<?php endwhile; ?>
+			get_template_part( 'items/visp-example' );
+		endwhile;
+		?>
 		</div><!-- /.o-row -->
 	</div><!-- /.o-container -->
 </section>
