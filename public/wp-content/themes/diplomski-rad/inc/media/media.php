@@ -67,8 +67,8 @@ function diplomski_get_asset_src( $filename = '' ) {
 		return '';
 	}
 
-	if ( defined( 'BOJLERSITE_LOCAL_DEV' ) && true === BOJLERSITE_LOCAL_DEV ) {
-		return '//bojler-site.test:9000/assets/media/' . $filename;
+	if ( defined( 'DIPLOMSKI_LOCAL_DEV' ) && true === DIPLOMSKI_LOCAL_DEV ) {
+		return '//diplomski-rad.test:9000/assets/media/' . $filename;
 	}
 
 	return trailingslashit( get_template_directory_uri() ) . 'assets/media/' . $filename;
@@ -122,17 +122,3 @@ function diplomski_keep_resize_aspect_ratio( $output, $orig_w, $orig_h, $dest_w,
 	return image_resize_dimensions( $orig_w, $orig_h, $dest_w, $dest_h, true );
 }
 add_filter( 'image_resize_dimensions', 'diplomski_keep_resize_aspect_ratio', 10, 6 );
-
-/**
- * Renders inline svg icon
- *
- * @param string $name File name without extension.
- * @return string
- */
-function bojler_acf_icon_picker_svg_icon( $name ) {
-	$filename = trailingslashit( get_stylesheet_directory() ) . "inc/acf-icon-picker/icons/$name.svg";
-
-	if ( file_exists( $filename ) ) {
-		return $filename;
-	}
-}
