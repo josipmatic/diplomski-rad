@@ -22,37 +22,49 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'diplomski-rad' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
+	<div class="c-offcanvas">
+		<div class="c-offcanvas__inner">
 			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$diplomski_rad_description = get_bloginfo( 'description', 'display' );
-			if ( $diplomski_rad_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $diplomski_rad_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+			$menu = diplomski_get_nav_menu( true );
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'diplomski-rad' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
+			if ( ! empty( $menu ) ) {
+				echo $menu; // WPCS: xss ok.
+			}
 			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		</div><!-- /.c-offcanvas__inner -->
+	</div><!-- /.c-offcanvas -->
+
+	<?php
+	$classes          = array( 'c-header' );
+	$button_classes   = array( 'c-hamburger-icon', 'c-hamburger-icon--slider', 'js-hamburger-icon', 'js-offcanvas-toggle', 'u-ml-auto', 'u-hidden@lg' );
+	$download_classes = array( 'c-btn c-btn--md c-btn--gray u-text-md' );
+	?>
+	<header class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+		<div class="o-container">
+			<div class="o-row">
+				<div class="o-col-12">
+					<div class="u-flex u-items-center">
+						<h1 class="c-logo u-mb-0 js-logo">
+							<a href="<?php echo esc_url( home_url() ); ?>" class="c-logo__link">ViSP Examples</a>
+						</h1><!-- /.c-logo -->
+						<?php
+						$menu = '';
+
+						$menu = diplomski_get_nav_menu();
+
+						if ( ! empty( $menu ) ) {
+							echo $menu; // WPCS: xss ok.
+						}
+						?>
+						<button class="<?php echo esc_attr( implode( ' ', $button_classes ) ); ?>" type="button">
+							<span class="c-hamburger-icon__box">
+								<span class="c-hamburger-icon__inner"></span>
+							</span><!-- /.c-hamburger-icon__box -->
+						</button><!-- /.c-hamburger-icon -->
+					</div>
+				</div><!-- /.col -->
+			</div><!-- /.row -->
+		</div><!-- /.o-container -->
+	</header><!-- /.c-header -->
 
 	<div id="content" class="site-content">
