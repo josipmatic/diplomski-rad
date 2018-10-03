@@ -6,31 +6,23 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package diplomski-rad
+ * @package WordPress
+ * @subpackage Bojler_Site
+ * @since 1.0
+ * @version 1.2
  */
 
+$classes = array( 'u-text-gray-100', 'u-text-sm' );
 ?>
-
-	</div><!-- #content -->
-
-	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'diplomski-rad' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'diplomski-rad' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'diplomski-rad' ), 'diplomski-rad', '<a href="http://underscores.me/">Josip Matic</a>' );
-				?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
-</div><!-- #page -->
-
-<?php wp_footer(); ?>
-
-</body>
+		<footer class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>">
+			<div class="o-container">
+				<div class="o-row">
+					<div class="o-col-12 u-mt-6 u-mt-8@md u-mb-4 u-mb-6@md">
+						<p>Open source visual servoing platform library.</p>
+					</div><!-- /.o-col -->
+				</div><!-- /.o-row -->
+			</div><!-- /.o-container -->
+		</footer>
+		<?php wp_footer(); ?>
+	</body>
 </html>
