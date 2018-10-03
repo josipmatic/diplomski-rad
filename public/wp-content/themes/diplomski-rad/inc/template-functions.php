@@ -35,3 +35,78 @@ function diplomski_rad_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'diplomski_rad_pingback_header' );
+
+/**
+ * Returns nav menu.
+ *
+ * @param boolean $mobile             Is nav mobile.
+ * @param boolean $homepage           Is nav homepage.
+ * @param boolean $is_single_template Is nav template single page.
+ *
+ * @return string|false|void
+ */
+function diplomski_get_nav_menu( $mobile = false, $homepage = false, $is_single_template = false ) {
+	$menu = '';
+
+	if ( true === $mobile ) {
+		$menu = wp_nav_menu( array(
+			'theme_location' => 'diplomski__menu-navbar',
+			'menu_id'        => 'primary-menu',
+			'menu_class'     => 'c-nav c-nav--stacked u-mx-auto',
+			'link_before'    => '',
+			'link_after'     => '',
+			'container'      => false,
+			'fallback_cb'    => false,
+			'echo'           => false,
+			'item_spacing'   => 'discard',
+		) );
+
+		return $menu;
+	}
+
+	if ( true === $homepage ) {
+		$menu = wp_nav_menu( array(
+			'theme_location' => 'diplomski__menu-navbar',
+			'menu_id'        => 'primary-menu',
+			'menu_class'     => 'c-nav u-hidden u-inline-block@md',
+			'link_before'    => '',
+			'link_after'     => '',
+			'container'      => false,
+			'fallback_cb'    => false,
+			'echo'           => false,
+			'item_spacing'   => 'discard',
+		) );
+
+		return $menu;
+	}
+
+	if ( true === $is_single_template ) {
+		$menu = wp_nav_menu( array(
+			'theme_location' => 'diplomski__menu-navbar',
+			'menu_id'        => 'primary-menu',
+			'menu_class'     => 'c-nav c-nav--white u-mb-0 u-ml-auto u-hidden u-block@lg',
+			'link_before'    => '',
+			'link_after'     => '',
+			'container'      => false,
+			'fallback_cb'    => false,
+			'echo'           => false,
+			'item_spacing'   => 'discard',
+		) );
+
+		return $menu;
+	}
+
+	$menu = wp_nav_menu( array(
+		'theme_location' => 'diplomski__menu-navbar',
+		'menu_id'        => 'primary-menu',
+		'menu_class'     => 'c-nav u-mb-0 u-ml-auto u-hidden u-block@lg',
+		'link_before'    => '',
+		'link_after'     => '',
+		'container'      => false,
+		'fallback_cb'    => false,
+		'echo'           => false,
+		'item_spacing'   => 'discard',
+	) );
+
+	return $menu;
+}
