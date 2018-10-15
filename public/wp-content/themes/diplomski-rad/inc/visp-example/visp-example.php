@@ -42,7 +42,7 @@ function visp_example_cpt() {
 	$args = array(
 		'label'               => __( 'VISP Example', 'visp-examples' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'editor' ),
+		'supports'            => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
