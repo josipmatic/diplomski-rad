@@ -1,0 +1,50 @@
+/* =============================================================================
+   VISP-ITEM (components/_visp-item.scss)
+   ========================================================================== */
+
+.c-visp-items {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.c-visp-item {
+	flex: 0 100%;
+	position: relative;
+	pointer-events: all;
+	overflow: hidden;
+	border-bottom: 0;
+
+	@include media-breakpoint-up(md) {
+		flex: 0 50%;
+	}
+
+	&:hover {
+		img {
+			transform: scale(1.3);
+		}
+
+		.c-visp-item__details {
+			visibility: visible;
+		}
+	}
+}
+
+.c-visp-item__image {
+	width: 100%;
+	transition: .3s ease-in-out;
+	pointer-events: none;
+	transform: scale(1);
+}
+
+
+.c-visp-item__details {
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 50px 20px 0;
+	transition: visibility .2s ease-in;
+	color: $color-white;
+}

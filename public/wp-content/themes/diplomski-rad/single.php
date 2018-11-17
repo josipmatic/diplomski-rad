@@ -35,6 +35,7 @@ if ( have_posts() ) :
 						<iframe width="100%" height="100%" src="<?php echo esc_url( 'https://www.youtube-nocookie.com/embed/' . $video_id . '?rel=0&amp;showinfo=0' ); ?>" frameborder="0" allowfullscreen class="u-mb-2"></iframe>
 					</div><!-- /.c-video -->
 				<?php endif; ?>
+				<?php the_content(); ?>
 				</div><!-- /.o-col -->
 			</div><!-- /.o-row -->
 		</div><!-- /.o-container -->
