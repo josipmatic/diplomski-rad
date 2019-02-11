@@ -12,7 +12,6 @@
 	flex: 0 100%;
 	position: relative;
 	pointer-events: all;
-	overflow: hidden;
 	border-bottom: 0;
 
 	@include media-breakpoint-up(md) {
@@ -20,31 +19,27 @@
 	}
 
 	&:hover {
-		img {
+		.c-visp-item__image img {
 			transform: scale(1.3);
-		}
-
-		.c-visp-item__details {
-			visibility: visible;
 		}
 	}
 }
 
 .c-visp-item__image {
 	width: 100%;
-	transition: .3s ease-in-out;
 	pointer-events: none;
-	transform: scale(1);
+	overflow: hidden;
+
+	img {
+		width: 100%;
+		transform: scale(1);
+		transition: .3s ease-in-out;
+	}
 }
 
-
 .c-visp-item__details {
-	visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	padding: 50px 20px 0;
-	transition: visibility .2s ease-in;
-	color: $color-white;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
 }

@@ -1,0 +1,41 @@
+/* =============================================================================
+   KOD (components/_kod.scss)
+   ========================================================================== */
+
+.c-kod {
+	padding: 4px 6px;
+	margin: 4px 8px 4px 2px;
+	background-color: #fbfcfd;
+	border: 1px solid #c4cde5;
+
+	pre {
+		background: #2d2d2d;
+		overflow: auto;
+		font-family: IBM Plex Mono,monospace;
+		text-align: left;
+		white-space: pre;
+		word-spacing: normal;
+		word-break: normal;
+		word-wrap: normal;
+		line-height: 1.5;
+		tab-size: 4;
+		hyphens: none;
+	}
+
+	code {
+		background: none;
+		font-family: IBM Plex Mono,monospace;
+		text-align: left;
+		white-space: pre;
+		word-spacing: normal;
+		word-break: normal;
+		word-wrap: normal;
+		line-height: 1.5;
+		tab-size: 4;
+		hyphens: none;
+
+		p {
+			margin-bottom: 0;
+		}
+	}
+}
