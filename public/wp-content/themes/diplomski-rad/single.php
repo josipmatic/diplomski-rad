@@ -38,6 +38,16 @@ if ( have_posts() ) :
 				<div class="u-mt-4">
 					<?php the_content(); ?>
 				</div>
+				<?php
+				$source_code = get_field( 'source_code' );
+
+				if ( ! empty( $source_code ) ) :
+				?>
+				<div class="c-download-code">
+					<a class="c-download-code__icon" href="<?php echo esc_url( $source_code ); ?>"><?php echo file_get_contents( trailingslashit( get_stylesheet_directory() ) . "assets/images/icons/code.svg" ); // WPCS: xss ok. ?></a>
+					<a class="c-download-code__text" href="<?php echo esc_url( $source_code ); ?>">Download source code</a>
+				</div>
+				<?php endif; ?>
 				</div><!-- /.o-col -->
 			</div><!-- /.o-row -->
 		</div><!-- /.o-container -->
